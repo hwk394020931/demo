@@ -29,18 +29,34 @@
             },
             c:[11,'jack','Tom'],
         }
-        //objCopy
-        function simpleClone(objNew){
-            var obj = {}
-            for(var i in objNew){
-                obj[i] = objNew[i];
+        // objCopy（浅拷贝）
+        // function simpleClone(objNew){
+        //     var obj = {}
+        //     for(var i in objNew){
+        //         obj[i] = objNew[i];
+        //     }
+        //     return obj;
+        // }
+        // var objCopy = simpleClone(obj);
+        // objCopy.b.b = 2222;  //修改 B 值, A值是否改变
+        // console.log(obj);
+        // console.log(objCopy);
+
+        // objCopy(深拷贝)
+        function deepClone(startObj,endObj){
+            var obj = endObj || {}
+            for (var i in startObj) {
+                if(typeof startObj[i] === 'object'){
+                    obj[i] = startObj[i].constructor === Array ? []:{}
+                    deepClone(startObj,endObj)
+                }else{
+                    obj[i] = startObj[i];
+                }                
             }
-            return obj;
+            return obj
         }
-        var objCopy = simpleClone(obj);
-        objCopy.b.b = 2222;  //修改 B 值, A值是否改变
-        console.log(obj);
-        console.log(objCopy);
+
+        var 
 
 
 
