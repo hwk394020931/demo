@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符多的情况需要注意哪些</title>
+</head>
+<body>
+    <script>
+        //运算符的优先级
+
+        //舍入唔差的情况以及解决方案
+        console.log(0.1+0.2); //0.30000000000000004
+        //原因：js 会把 0.1 转换 为二进制，0.1+0.2 二进制相加，超过了计算机精度就会丢失
+        //解决方法
+        //方法1
+        console.log((0.1+0.2).toFixed(2)); //舍去
+        //方法2
+        console.log((0.1*10+0.2*10)/10); //幂次方的增加
+        function add(num1,num2){
+            m = Math.pow(10,2);
+            return (num1*m + num2*m)/m;
+            
+        }
+        console.log(add(0.1,0.2));
+    </script>
+</body>
+</html>

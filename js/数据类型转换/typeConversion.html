@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发中常见数据类型转换有哪些坑</title>
+</head>
+<body>
+    <script>
+        //特殊类型的隐式转换 (记住这5个 NaN,0,undefined,null,"" 返回false) =>false 其他的都为true
+        var val = Boolean(NaN); //隐式        
+        var num = Boolean(1);
+        var str = Boolean("aaaa");
+        console.log(val);
+        console.log(num);
+        console.log(str);
+
+        //逻辑运算符&&和||在隐式转换下的情况
+        console.log(true && true); //true 反之 false
+        console.log(true || true); //false 反之 true
+        //可以通过取值的方式让运算更加方便
+        console.log(0 || 5);  //打印 5 。隐式转换 false || true 输出true再转回5
+        console.log(0 && 5);  //打印 0 。隐式转换 false && true 输出false再转回0
+
+        //与if 结果一样，但性能比 if 要高
+        var a = 5
+        if(a===0){
+            console.log(a);
+        }else{
+            console.log(a);
+        }
+
+        //== 和 === 的区别
+        console.log(undefined == null); //true  值对比
+        console.log(undefined === null); //false 值对比 还有类型相同才返回true
+
+    </script>
+</body>
+</html>
