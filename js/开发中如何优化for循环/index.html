@@ -11,15 +11,49 @@
         //for循环性能优化
         //例子 求1+2+3+...+100 之后
         var sum=0;
-        for(var i=1;i<=10;i++){
+        var time=0;
+        for(var i=1;i<=100;i++){
+            var a = i;
+            time = a++;
             sum+=i;
         }
-        console.log(sum);
+        console.log("次数"+time);
+        console.log(sum); //5050d
 
         //优化 使用算法 
-        function sums(num){
-            (1)
+        function sums(startVal,endVal){
+            var val = (startVal+endVal)*endVal/2;
+            return val;
         }
+        console.log(sums(1,100));//5050
+
+        //例子2 在数组中哪两个相加等于11
+        var arr = [1,5,7,4,8,9,6];
+        for(var i = 0;i<arr.length;i++){
+            var time = i+1;
+            time++;
+            for(var j=i+1;j<arr.length;j++){                
+                var time2 = j;
+                time2++;
+                if(arr[i]+arr[j] == 11){
+                    console.log(arr[i]);
+                    console.log(arr[j]);
+                }
+            }            
+        }
+        console.log("i循环次数"+time);
+        console.log("j循环次数"+time2);
+        //优化
+        for(var i=0;i<arr.length;i++){
+             var val=11-arr[i];
+             if(arr.indexOf(val) !=-1){
+                var a=arr.indexOf(val);
+                console.log("优化"+arr[a]);
+             };             
+        }
+
+        //结论 第一种 循环 10*10 ，需要循环一百次
+        //优化后 只循环了10 次 性能大大提升了
     </script>
 </body>
 </html>

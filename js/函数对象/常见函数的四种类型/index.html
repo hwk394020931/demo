@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见函数的四种类型有哪些</title>
+</head>
+<body>
+    <script>
+        //1、匿名函数：定义时候没有任何变量引用的函数
+        //匿名函数自调：如果函数只执行一次
+        (function(a,b){
+            console.log("a="+a);
+            console.log("b="+b);
+        })(1,2);
+
+        //jquery 源码就用到了匿名函数
+        (function(window,undefined){
+            var jQuery;
+            // jQuery.fun =function(){} //把方法暴露在window 上
+            //...
+            window.jQuery = window.$ = jQuery;
+        })(window)
+        // 总结：优点就是节约内存空间，调用前和调用后内存中不创建任何函数对象
+        //执行完就会销毁
+
+
+        //2、回调函数(callback)：如果一个函数作为对象交给其他函数使用
+        var arr = [13,6,65,50,23]
+        arr.sort =(function(a,b){return a-b})
+
+        //异步回调：ajax
+        function getPrice(inputparams,callback){
+            $.ajax({
+                url : ctx + '/xxxxx',
+                type : "post",
+                data : {'fieId':inputParams},
+                async : true,
+                success : function(data){
+                    result = data;
+                    callback(result);
+                }
+            });
+        }
+
+        //3、递归函数：循环调用函数本身
+        var f = function(x){
+            if(x ===2){
+                return x;
+            }else{
+                return x*f(x-1);
+            }
+        }
+        //arguments.callee:注意在严格模式下不支持使用 use strict
+        function f(x){
+            if(x===1){
+                return 1;
+            }else{
+                return x * arguments.callee(x-1);
+            }
+        }
+        //4、构造函数
+    </script>
+</body>
+</html>

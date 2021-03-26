@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发中编码和解码使用场景有哪些</title>
+</head>
+<body>
+    <script>
+        /*escape 和 unescape、
+          encodeURI 和 decodeURI、 
+          encodeURIComponent 和 decodeURIComponent
+        */
+        var url = 'http://wwww.baidu.com?key=hello&name=张三&num=123'
+
+        // console.log(escape(url));//编码 根据 ASCII (a-z,0-9)编码
+        // var a = escape(url);
+        // console.log(unescape(a));
+
+        // console.log(encodeURI(url)); //根据 Unicode 只对中文做编码
+        // var a = encodeURI(url);
+        // console.log(decodeURI(a));
+
+        // console.log(encodeURIComponent(url)); //属于 escape 和 encodeURI 的结合版
+        // var a = encodeURIComponent(url);
+        // console.log(decodeURIComponent(a));
+
+        //实际应用问题
+        /* 实际 使用最多的是 encodeURI() */
+
+    </script>
+</body>
+</html>
