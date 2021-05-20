@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-9 开发中使用this的坑有哪些</title>
+</head>
+<body>
+    <script>
+        //this用法
+        //1、指代当前调用的这个对象：
+        //4中绑定规则分别是（默认绑定、隐式绑定、显示绑定、new绑定) 优先级从低到高
+
+        var man={
+            name:'jack',
+            age: 30,
+            getName:function(){
+                console.log(this.name);
+            },
+            getAge:function(){
+                //var that = this; //把this保留下来                
+                function aa(){ //局部函数
+                    console.log(this+' '+this.age); //局部函数this指向window undefined
+                    //console.log(this+' '+that.age); //指向就是man，不是windows 30
+                }
+                aa(); //window.aa()
+                console.log(this+ ' '+this.age); // 30
+            }
+        }
+
+        man.getName(); //this->man
+        man.getAge(); 
+
+
+        //工作误区
+        // $('#btn').click(function(){
+        //     //this是被点击的#conten
+        //     var that = this; //先保留下来
+        //     $('.content').each(function(){ //才可以使用（'#btn'）
+
+        //     })
+        // })
+
+        //改变this 指向
+        //call apply
+        //bind
+        var name = 'Tom';
+        var obj={
+            name:'hewk',
+            getName:function(){
+                console.log(this.name);
+            }
+        }
+        obj.getName(); //hewk 
+        var fn = obj.getName;
+        // var fn = function(){
+        // console.log(this.name);        
+        // }
+        fn(); //Tom
+        //window.fn() // Tom
+
+        var fn1 = obj.getName.bind(obj); //把this的指向绑定给obj
+        fn1(); //hewk
+
+
+        //手写一个bind 方法
+        Function.prototype.newBind = function(obj){
+            var self = this;
+            return function(){
+                self.apply(obj);
+            }
+        }
+
+        //检测上面方法案例
+        var name='Tom';
+        var o = {
+            name:'Jack',
+            get:function(){
+                console.log(this.name);
+            }
+        }
+        
+        var f = o.get.newBind(o);
+        f();
+
+    </script>
+</body>
+</html>

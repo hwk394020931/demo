@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-7 开发中call、apply、bind的使用场景区分</title>
+</head>
+<body>
+    <script>
+        /*
+            这三个方法 都是Function对象上面得方法
+
+            1、apply()方法调用一个函数，其具有一个指定的this值，以及作为一个数组(或类似数组得对象)提供得参数
+            
+            apply：方法能劫持另外一个对象得方法，继承另外一个对象得属性   //介绍
+            
+            Function.apply(obj,args) 方法能接收两个参数 //使用
+            obj：这个对象将代替Function类里this对象
+            args：这个是数组，它将作为参数传给Function(args-->argumemnts)
+        */
+
+        //call 与 apply 得区别
+        //call：单个得参数传入
+        //apply：以数组得形式传入
+
+        var std1={
+            name:'jack',
+            age:19,
+            say:function(school,grade){
+                console.log(this.name+'今年:'+school+'年级：'+grade);
+            }
+        }
+
+        var std2={
+            name:'Tom'
+        }
+
+        std1.say.call(std2,'清华','四');
+        
+        std1.say.apply(std2,['北大','三']);
+        //应用：类型组转数组
+        //类数组没又数组得方法，必须要转换数组才可以          
+        //var arr = Array.prototype.slice.apply(arguements) 
+
+        //bind：类似与call 但是与其不同得是call 调用之后可以立即执行，但bind需要用一个变量进行接收之后再执行
+        var val = std1.say.bind(std2,'北大','五');
+        console.log(val);
+    </script>
+</body>
+</html>

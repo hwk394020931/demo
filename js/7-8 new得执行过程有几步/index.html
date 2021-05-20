@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-8 new得执行过程有几步</title>
+</head>
+<body>
+    <script>
+        //new 执行过程
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        var p = new Person("jack",22) //实例化
+        console.log(p.name);
+
+        //1、创建一个新对象OBJ
+        var obj = new Object()
+        //2、把obj 对象中proto指向构造函数的prototy 对象实现继承
+        obj.__proto__ = Fn.prototype //把对象和构造函数关联起来
+        //3、将步骤1新创建的对象obj作为this 的上下文
+        var result = fn.call(obj)
+        //4、返回创建的对象obj(如果该函数没有返回对象，则返回this)
+        if(typeof result === 'object'){
+            return result //func = result
+        }else{
+            return obj   //func = obj
+        }
+
+    </script>
+</body>
+</html>

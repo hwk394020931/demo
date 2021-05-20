@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-4 开发中如何使用继承</title>
+
+    <style>
+        * {
+            margin: 0;            
+            padding: 0;
+            font-size: 13px;
+        }
+
+        #tabContent {
+            height: 40px;
+ 
+            border-top: #060 2px solid;
+ 
+            border-bottom: #060 2px solid;
+ 
+            background-color: #690;
+        }
+
+        #tabContent ul {
+ 
+            list-style: none;
+        
+            margin-left: 50px;
+        
+        }
+        
+        
+        
+        #tabContent li {
+        
+            display: inline;
+        
+            line-height: 40px;
+        
+            float:left
+        
+        }
+            
+        #tabContent a:hover {
+        
+            background-color: #060;
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="content" id="tabContent">
+        <ul class="tabs" id="tabs">
+            <li class="active">标签1</li>
+            <li>标签2</li>
+            <li>标签3</li>
+            <li>标签4</li>
+        </ul>
+
+
+        <div class="contentBlock active">
+            标题1的内容
+            原本只抱着搏一次的渺茫希望，可是三周后，他接到了那家公司二面的通知，一个月后，他拿到了人生中的第一份offer。我永远也忘不了他拿到offer那天，我们正坐在食堂吃饭，他突然狠狠抓住我的胳膊跟我说：他过了！
+        </div>
+        <div class="contentBlock">
+            标题2的内容
+            那天的饭他没有吃完，甚至他飞喷在我脸上的口水都还没干，他就握着手机上蹿下跳打给了家人，然后仍然觉得情绪难以平复，点开朋友圈，写写删删无数次，最终发出去一条语无伦次的朋友圈。
+        </div>
+        <div class="contentBlock">
+            标题3的内容
+            我丝毫不用怀疑，无论之后再收到多少心仪的offer，那一年那一刻的兴奋、激动、喜悦，都再也不会重现，那是他这一生都值得铭记的珍贵瞬间。
+        </div>
+        <div class="contentBlock">
+            标题4的内容
+            在朋友拿到offer后没多久，我们就毕业了。他带着毛头小子的热血满心欢喜去了广州，而我也一样，在拿到我人生的第一份offer后，我的骄傲、喜悦都开始无限膨胀。我们带着最迫不及待的冲动，一个猛子扎进了工作岗位，带着学生样儿的生涩和对新生活的向往，在职场上趾高气昂地迈出了第一步。
+        </div>
+
+    </div>
+
+
+    <script>
+        /*
+            vue 用了很多框架 (vue-router)
+            继承：子继承父
+            js继承的方式6种：
+                简单原型链：类式继承
+                借用构造函数：缺点=>父类的原型方法自然不会被子类继承
+                组合继承(最常用)：类式继承+构造函数式继承
+                寄生组合继承(最佳方式)：寄生式继承+构造函数式继承
+                原型式：跟类式继承一样，父类对象book中的值类型的属性被复制，引用类型的属性被共有
+                寄生式：通过在一个函数内的过度对象实现继承并返回新对象的方式
+        */
+
+
+        //通过例子理解 
+        //定义一个Tabs构造函数
+        function Tabs(id){
+            var tabContent=document.getElementById(id);
+            var tabs=tabContent.getElementsByClassName('tabs')[0];
+            this.lis=tabs.getElementsByTagName('li');   //这里采用this.lis 为了之后可以在原型里面被调用
+            this.divContentBlock=tabContent.getElementsByClassName("contentBlock");
+
+            for(var i=0;i<this.lis.length;i++){ //在这里采用了let保留局部变量
+                var self=this; //这里的this 需要保留下来，因为他指的是Tabs对象实例化后的新对象
+                //console.log(self);
+                self.lis[i].num=i; //将每个lis[i]对象增加一个num属性，保存他当前的这个i的值
+                //console.log(self.lis[i].num);
+                this.lis[i].onclick=function(){
+                    // console.log(this);//这里的this是当前的对象lis[i]==>li
+                    // console.log(this.num);//当前这个li上之前保存的num属性值
+                    self.tabChange(this.num);
+                }
+            }
+        }
+
+        Tabs.prototype.tabChange=function(j){ //在构造函数上定义一个tabChange 方法,作用用来隐藏不是active 的标签
+            for(var i=0;i<this.lis.length;i++){
+                this.lis[i].className="";
+                this.divContentBlock[i].style.display="none";
+            }
+            this.lis[j].className="active";
+            this.divContentBlock[j].style.display="block";
+        }
+
+        new Tabs("tabContent");
+    </script>
+</body>
+</html>

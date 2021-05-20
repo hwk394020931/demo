@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-1 面试高频如何理解面向对象</title>
+</head>
+<body>
+    <script>
+        /*
+        1、什么是对象
+            具备所有属性 {a:1} 1就是a的私用属性
+            只要是new 出来的都是对象  
+            不同对象肯定不相等（即使值一样） var a=[1],var b=[2]; a==b > false
+            对象都会引用机制 堆 栈
+
+        2、JS中万物皆对象 通过new [Array Date Object Function String] 出来的都是对象
+            字面量——字面上显示的东西    var str='fdj';var num=1;
+            包装类——没有new的函数声明，可以理解为不是对象；String Number
+
+        3、面向对象(初级与中级之间的分水岭)
+            把任何的数据和行为抽象成一个形象的对象，类似人生活中思考的方式
+
+            类：对象（object）的模板，定义了同一组对象（又称为“实例”）共有的属性和方法
+            车类：共有的属性：轮胎，发动机....
+                  共有的方法：发动
+            对象：属性：轮胎，发动机，方法：发动
+            在javascript 中没有内置类这种概念，不像java class
+            但在javascript可以模拟，那怎么模拟呢，通过构造函数 function person(){} 模拟一个类，定义属性和方法
+            然后通过new 方式， 也就是实例化出来一个对象
+
+            js中的重点：通过构造函数去模拟一个类去实例化对象
+
+            面向对象OOP：继承 封装 多态
+            1、继承：子继承父
+
+            2、封装：就是把公用的行为抽象为一个方法。 
+
+            3、多态：重载（）、重写(把继承中方法重新写 )
+        */
+    </script>
+</body>
+</html>
