@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1 什么是媒体查询</title>
+    <style>
+        #div0{
+            width: 100px;
+            height: 200px;            
+        }
+
+        @media screen and (min-device-width:200px) and (max-device-width:299px){
+            #div0{
+                background-color: rebeccapurple;
+            }
+            
+        }
+
+         @media screen and (min-device-width:300px) and (max-device-width:499px){
+            #div0{
+                background-color: darkcyan;
+            }
+        }
+
+         @media screen and (min-device-width:0px) and (max-device-width:199px){
+            #div0{
+                background-color: greenyellow;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //MediaQuery 使用方法
+        //作用：为不同尺寸的屏幕设定不同的CSS样式
+        //例子        
+    </script>
+
+    <div id="div0"></div>
+</body>
+</html>
