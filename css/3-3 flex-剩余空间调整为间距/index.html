@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-3 flex-剩余空间调整为间距</title>
+
+    <style>
+        #div0{
+            width: 500px;
+            background-color: paleturquoise;
+            display: flex;
+
+            justify-content: space-evenly;
+        }
+        #div0 div{
+            width: 100px;
+            height: 100px;
+            background-color: palegoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+            justify-content
+            作用：用来在存在剩余空间时，设置为间距的方式
+
+                属性值              作用
+            flex-start          默认值，从左到右,挨着行的开头
+            flex-end            从右到左，挨着行的结尾
+            center              居中显示
+            space-between       平均分布在该行上，两边不留间隔空间
+            space-around        平均分布在该行上，两边留有一半的间隔空间
+            space-evenly        平均分布在该行上
+        */
+    </script>
+
+    <div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

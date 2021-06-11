@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 媒体查询其他引入方式-1</title>
+
+    <style>
+        /*公共样式*/
+        #div0{
+            width: 100%;
+            height: 500px;
+        }
+        #div0 div{
+            float: left;
+            height: 100px;
+            
+        }        
+        #div0 div:nth-child(1){
+            background-color: hotpink;
+        }
+        #div0 div:nth-child(2){
+            background-color: lawngreen;
+        }
+        #div0 div:nth-child(3){
+            background-color: lightblue;
+        }
+    </style>
+
+    <style media='(min-device-width:400px')>
+        #div0 div{
+            width: 33.3%;
+        }
+    </style>
+
+    <style media="(min-device-width:300px) and (max-device-width:399px)">
+        #div0 div{
+            width: 50%;
+        }
+    </style>
+
+    <style media="(max-device-width:299px)">
+        #div0 div{
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        //内部样式表 把媒体查询分隔来写
+    </script>
+    <div id='div0'>
+        <div></div>
+        <div></div>
+        <div></div>                
+    </div>
+</body>
+</html>

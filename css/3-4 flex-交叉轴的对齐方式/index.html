@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-4 flex-交叉轴的对齐方式</title>
+
+    <style>
+        #div0 {
+            width: 400px; 
+            
+            background-color: purple;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            height: 400px;
+        }
+
+        #div0 div{
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+            /* margin-top: 10px; */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+            align-items
+            作用：设置每个flex元素在交叉轴上的默认对齐方式
+                y轴为交叉轴的时候，对齐方式可以了解为上中下
+                x轴为交叉轴的时候，对齐方式可以理解为左中右
+
+                属性值              作用
+            flex-start          位于容器的开头
+            flex-end            位于容器的结尾
+            center              居中显示           
+
+            align-conter
+            作用：设置每个flex 元素在交叉轴上的默认对齐方式
+
+                属性值              作用
+            flex-start          位于容器的开头
+            flex-end            位于容器的结尾
+            center              居中显示
+            space-between       之间留有空白
+            space-around        两端都留有空白
+
+            区分
+            align-items：多行的每一行单独处理就是用items
+
+            align-conter：把多行当作一个整体来处理对齐方式就用content
+
+        */
+    </script>
+
+    <div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

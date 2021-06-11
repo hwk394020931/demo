@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-2 flex-主轴方向与换行</title>
+    <style>
+        #div0{
+            width: 300px;
+            background-color: orchid;
+            display: flex; /*把父元素盒子设置为flex */
+
+            /* flex-direction: row;
+            flex-wrap: wrap-reverse; */
+            flex-flow: row wrap;
+        }
+        #div0 div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+            flex-direction
+            作用：子元素在父元素盒子中的排列方式
+
+                属性值              作用
+            row                 默认值，按从左到右的顺序显示
+            row-reverse         与row相似，但是以相反的顺序
+            column              灵活的项目将垂直显示，按从上到下的顺序
+            column-reverse      与column相似，但是以相反的顺序
+
+            flex-wrap
+            作用：子元素在父元素盒子中是否换行
+
+                属性值              作用
+            nowrap              默认值，不换行或换列
+            wrap                换行或换列
+            wrap-reverse        换行或换列，但以相反的顺序
+
+            flex-flow
+            作用:flex-direction与flex-wap 属性的简答   
+            
+            语法 flex-flow:<flex-duretin> || <flex-wrap>
+          
+        */
+    </script>
+
+    <div id="div0">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

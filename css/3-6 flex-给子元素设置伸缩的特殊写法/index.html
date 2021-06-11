@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-6 flex-给子元素设置伸缩的特殊写法</title>
+
+    <style>
+        #div0{
+            display: flex;
+            width: 400px;
+            height: 500px;
+            background-color: violet;
+        }
+
+        #div0 div{
+            width: 100px;
+            height: 200px;
+            background-color: yellow;
+            /*flex: 1 1 300px; /*自动扩大，自动缩小，第三个属性就可以忽略掉*/
+            /*flex: 0 0 300px; /*不扩展，不缩小，那第三个属性就体现出来了*/
+            /*flex: 1 1 auto; /* flex:auto*/
+            /*flex: 0 0 auto; /* flex:none*/
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+            属性值              作用
+        flex:auto          flex: 1 1 auto
+        flex:none          flex: 0 0 auto
+        flex:0%;           flex: 1 1 0%
+        flex:100px         flex: 1 1 100px
+        flex:1             flex: 1 1 0%
+        */
+    </script>
+
+    <div id="div0">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-5 flex-给子元素设置伸缩比例flex属性</title>
+
+    <style>
+        #div0{
+            display: flex;
+            width: 400px;
+            height: 500px;
+            background-color: violet;
+        }
+
+        /*子对象
+            使用flex-basis了，原来的width就会失效
+        */
+
+        /* 扩展计算公式
+            400-50-100=250px
+            250/2 = 125;
+            125+50=175px
+            125+100=225px
+        */
+        /*缩小计算公式
+            400-600 = -200
+            200/4 = 50
+            300-50 = 250
+            300-150 = 150
+        */
+        #div0 div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            /* flex-basis: 50px;
+            flex-grow: 1; */
+        }
+
+        /*可以单独设置*/
+        #div0 div:nth-child(1){
+            /*flex-basis: 300px;
+            flex-grow: 1; /*125+50=175px*/
+             /*flex-shrink: 0; /*0代表不允许缩小*/
+            /*flex-shrink: 1;*/
+            /* 简化操作-简写 扩大比率->缩小比率->基准值*/
+            flex: 2 1 300px;
+
+        }
+        #div0 div:nth-child(2){
+            /*flex-basis: 300px;
+            flex-grow: 4; /*125+100=225px*/
+            /*flex-shrink: 3;*/
+            flex: 4 3 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    <script>
+        /*
+            属性值              作用
+        flex-basis          设置弹性盒伸缩基准值
+        flex-grow           设置弹性盒子的扩展比率
+        flex-shrink         设置弹性盒子的缩小比率
+        flex                flex-grow、flex-shrink、flex-basis的缩写
+        */
+       
+    </script>
+
+    <div id="div0">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

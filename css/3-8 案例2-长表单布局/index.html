@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-8 案例2-长表单布局</title>
+
+    <style>
+        #form div{
+            display: flex;
+            /*
+                上下元素间隔 处理方法
+
+            */
+            /* 1 通过margin撑开间隔*/
+            /* margin-top: 10px; */
+
+            /* 2  设置一个高度，来撑开来作为间隔，
+                弹性布局中的子元素默认自适应，需要通过属性设置
+            */
+            /* height: 30px;
+            align-items: flex-start;  */
+
+            /* 3  form(父)->div(子)->label(孙)*/
+            flex: 0 0 30px;
+            align-items: flex-start;   
+                        
+        }
+        #form div label{
+            flex: 0 0 100px;
+            text-align: right;
+        }
+
+        /* 3 把整个form 设置成弹性布局，以纵向排序 */
+        #form{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div id="form">
+            <div>
+                <label>姓名：</label>
+                <input type="text">
+            </div>
+            <div>
+                <label>请输入密码：</label>
+                <input type="text">
+            </div>
+        </div>
+    </form>
+</body>
+</html>
